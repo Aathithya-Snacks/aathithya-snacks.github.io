@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aathithya Snacks | The Art of Homemade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --dark: #0A0A0A; }
+        body { font-family: 'Outfit', sans-serif; background-color: var(--dark); color: #e5e5e5; overflow-x: hidden; }
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        .gold-text {
+            background: linear-gradient(75deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .luxury-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .luxury-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Mobile Menu Toggle Logic */
+        #menu-toggle:checked ~ #mobile-menu {
+            transform: translateX(0);
+        }
+
+        @keyframes subtle-float {
+            0% { transform: translateY(0px); opacity: 0.3; }
+            50% { transform: translateY(-20px); opacity: 0.6; }
+            100% { transform: translateY(0px); opacity: 0.3; }
+        }
+        .steam { animation: subtle-float 6s ease-in-out infinite; }
+        
+        .scroll-indicator {
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+    </style>
+</head>
+<body class="selection:bg-yellow-900 selection:text-white">
+
+    <a href="#" onclick="generalInquiry()" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] group">
+        <div class="absolute -inset-2 bg-yellow-600 rounded-full blur opacity-20 group-hover:opacity-50 transition"></div>
+        <div class="relative bg-black border border-yellow-600/50 p-3 md:p-4 rounded-full flex items-center gap-3">
+            <span class="text-[10px] uppercase tracking-widest pl-2 hidden lg:block">Email Us</span>
+            <div class="bg-yellow-600 p-2 rounded-full">
+                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+
+    <nav class="fixed w-full z-[150] px-6 md:px-12 py-6 flex justify-between items-center transition-all duration-500" id="navbar">
+        <div class="serif text-xl md:text-2xl font-bold tracking-tighter gold-text z-[160]">AATHITHYA</div>
+        
+        <div class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.4em] font-semibold text-gray-400">
+            <a href="#about" class="hover:text-yellow-500 transition">Tradition</a>
+            <a href="#menu" class="hover:text-yellow-500 transition">The Menu</a>
+            <a href="#bespoke" class="hover:text-yellow-500 transition">Bespoke</a>
+        </div>
+
+        <label for="menu-toggle" class="md:hidden relative z-[160] cursor-pointer p-2">
+            <input type="checkbox" id="menu-toggle" class="hidden peer">
+            <div class="w-6 h-0.5 bg-yellow-600 mb-1.5 transition-all peer-checked:rotate-45 peer-checked:translate-y-2"></div>
+            <div class="w-6 h-0.5 bg-yellow-600 mb-1.5 transition-all peer-checked:opacity-0"></div>
+            <div class="w-6 h-0.5 bg-yellow-600 transition-all peer-checked:-rotate-45 peer-checked:-translate-y-2"></div>
+        </label>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-black/98 translate-x-full transition-transform duration-500 flex flex-col items-center justify-center space-y-10 md:hidden">
+            <a href="#about" onclick="closeMenu()" class="serif text-3xl gold-text">Tradition</a>
+            <a href="#menu" onclick="closeMenu()" class="serif text-3xl gold-text">The Menu</a>
+            <a href="#bespoke" onclick="closeMenu()" class="serif text-3xl gold-text">Bespoke Orders</a>
+        </div>
+    </nav>
+
+    <header class="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://static.vecteezy.com/system/resources/previews/013/934/430/large_2x/indian-tea-time-snacks-in-group-sev-chivda-farsan-mixture-bakarwadi-served-in-different-bowls-free-photo.jpg')] bg-cover bg-center scale-110 opacity-20"></div>
+        
+        <div class="relative z-10 text-center px-6">
+            <h2 class="serif italic text-lg md:text-2xl text-yellow-500/80 mb-4">Hand-kneaded. Small batches.</h2>
+            <h1 class="serif text-5xl md:text-9xl mb-8 leading-[1.1] tracking-tighter">The Soul of <br><span class="gold-text">Coimbatore.</span></h1>
+            <p class="max-w-xl mx-auto text-gray-400 text-sm md:text-base font-light tracking-wide leading-relaxed mb-12">
+                We don't stock shelves. We fulfill cravings. Experience snacks made only after your request, using cold-pressed oils and family recipes.
+            </p>
+            <div class="flex items-center justify-center">
+                <a href="#menu" class="bg-white text-black px-8 md:px-12 py-4 font-bold uppercase tracking-widest text-[10px] hover:bg-yellow-500 transition-colors">Request a Batch</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 flex flex-col items-center gap-4">
+            <span class="text-[8px] uppercase tracking-[0.5em] text-gray-500">Scroll</span>
+            <div class="scroll-indicator"></div>
+        </div>
+    </header>
+
+    <section id="about" class="py-20 md:py-32 px-6 md:px-8">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+            <div class="relative">
+                <div class="absolute -top-10 -left-6 serif text-7xl md:text-[12rem] text-white/5 select-none">01</div>
+                <h3 class="serif text-4xl md:text-5xl mb-8 leading-tight">"Just Like <br><span class="italic text-yellow-600">Home</span> is a Promise."</h3>
+                <p class="text-gray-400 leading-relaxed mb-6">
+                    In our home, snacks aren't just food; they are the background score to every conversation. At Aathithya Snacks, we treat your order with the same sanctity. 
+                </p>
+                <div class="p-6 md:p-8 border border-yellow-900/30 bg-yellow-900/5 italic text-yellow-200/70 text-sm md:text-base">
+                    "We use the same spices we feed our children. No industrial shortcuts, no artificial crunch."
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img src="https://static.vecteezy.com/system/resources/previews/013/934/371/large_2x/indian-tea-time-snacks-in-group-sev-chivda-farsan-mixture-bakarwadi-served-in-different-bowls-free-photo.jpg" class="rounded-t-full border border-yellow-900/20 shadow-2xl" alt="Spices">
+                <img src="https://t3.ftcdn.net/jpg/01/73/46/26/360_F_173462647_kCLLkyCw3jg9cTPXhc8D0sZ3H1VSaZvB.jpg" class="mt-8 md:mt-12 rounded-t-full border border-yellow-900/20 shadow-2xl" alt="Cooking">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 md:py-32 bg-[#050505]">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-16 md:mb-20">
+            <h2 class="serif text-4xl md:text-5xl gold-text mb-4">The Collection</h2>
+            <p class="text-gray-500 uppercase tracking-widest text-[9px] md:text-[10px]">Select a masterpiece to inquire via Email</p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div class="luxury-card p-8 md:p-10 rounded-2xl">
+                <h4 class="serif text-xl md:text-2xl text-yellow-500 mb-6 border-b border-yellow-900/30 pb-4">The Murukku Ritual</h4>
+                <ul class="space-y-5">
+                    <li onclick="orderItem('Thatta Murukku', 'M1')" class="group cursor-pointer flex justify-between items-center text-sm">
+                        <span class="group-hover:text-white transition">Thatta Murukku</span>
+                        <span class="text-[10px] text-yellow-800 font-bold group-hover:text-yellow-500">M1</span>
+                    </li>
+                    <li onclick="orderItem('Butter Murukku', 'M5')" class="group cursor-pointer flex justify-between items-center text-sm">
+                        <span class="group-hover:text-white transition">Butter Murukku</span>
+                        <span class="text-[10px] text-yellow-800 font-bold group-hover:text-yellow-500">M5</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="luxury-card p-8 md:p-10 rounded-2xl md:-mt-8 bg-yellow-900/10 border-yellow-600/30">
+                <h4 class="serif text-xl md:text-2xl text-yellow-500 mb-6 border-b border-yellow-900/30 pb-4">Signature Crisps</h4>
+                <ul class="space-y-5">
+                    <li onclick="orderItem('Maravalli Chips', 'C2')" class="group cursor-pointer flex justify-between items-center text-sm">
+                        <span class="group-hover:text-white transition">Maravalli Chips</span>
+                        <span class="text-[10px] text-yellow-800 font-bold group-hover:text-yellow-500">C2</span>
+                    </li>
+                    <li onclick="orderItem('Nendharam Chips', 'C4')" class="group cursor-pointer flex justify-between items-center text-sm">
+                        <span class="group-hover:text-white transition text-yellow-400 font-semibold">Nendharam Gold</span>
+                        <span class="text-[10px] text-yellow-400 font-bold group-hover:text-yellow-500">C4</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="luxury-card p-8 md:p-10 rounded-2xl">
+                <h4 class="serif text-xl md:text-2xl text-yellow-500 mb-6 border-b border-yellow-900/30 pb-4">Traditional Sweets</h4>
+                <ul class="space-y-5">
+                    <li onclick="orderItem('Thenmitai', 'O1')" class="group cursor-pointer flex justify-between items-center text-sm">
+                        <span class="group-hover:text-white transition">Thenmitai</span>
+                        <span class="text-[10px] text-yellow-800 font-bold group-hover:text-yellow-500">O1</span>
+                    </li>
+                    <li onclick="orderItem('El Urundai', 'O3')" class="group cursor-pointer flex justify-between items-center text-sm">
+                        <span class="group-hover:text-white transition">El Urundai (White)</span>
+                        <span class="text-[10px] text-yellow-800 font-bold group-hover:text-yellow-500">O3</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="bespoke" class="py-20 px-6 text-center bg-black">
+        <div class="max-w-3xl mx-auto border-y border-yellow-900/20 py-16">
+            <h3 class="serif text-3xl md:text-4xl mb-6 italic">Gifting & Bespoke Orders</h3>
+            <p class="text-gray-500 mb-8 font-light text-sm md:text-base px-4">Hosting a function in Coimbatore? We offer custom packaging and fresh preparation for your special occasions.</p>
+            <button onclick="generalInquiry()" class="serif text-yellow-500 border-b border-yellow-500 hover:text-white hover:border-white transition pb-2 uppercase tracking-widest text-xs">Start a Conversation</button>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 flex flex-col md:flex-row justify-between items-center border-t border-white/5 text-[9px] text-gray-600 tracking-[0.3em] uppercase text-center gap-6">
+        <p>Aathithya Snacks © 2026</p>
+        <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+            <span>Coimbatore</span>
+            <span>Hand-Made</span>
+            <span>On-Demand</span>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Management
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = "rgba(5, 5, 5, 0.98)";
+                nav.style.paddingTop = "15px";
+                nav.style.paddingBottom = "15px";
+            } else {
+                nav.style.background = "transparent";
+                nav.style.paddingTop = "24px";
+                nav.style.paddingBottom = "24px";
+            }
+        };
+
+        function closeMenu() {
+            document.getElementById('menu-toggle').checked = false;
+        }
+
+        // Secure Email Inquiry Functions
+        function orderItem(name, code) {
+            const email = "personalofaathithya@gmail.com"; 
+            const subject = encodeURIComponent(`Inquiry: ${name} (Code: ${code})`);
+            const body = encodeURIComponent(`Greetings Aathithya Snacks,\n\nI would like to inquire about a fresh batch of ${name} (Code: ${code}). Please share details on the next available slot.\n\nThank you.`);
+            
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+
+        function generalInquiry() {
+            const email = "personalofaathithya@gmail.com";
+            const subject = encodeURIComponent("General Inquiry - Aathithya Snacks");
+            const body = encodeURIComponent("Hello Aathithya Snacks,\n\nI'm looking for high-quality homemade snacks. Could you help me select from your collection?");
+            
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>
