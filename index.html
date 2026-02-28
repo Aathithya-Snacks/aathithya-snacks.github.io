@@ -28,8 +28,11 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
-        /* Mobile Menu Toggle Logic */
-        #menu-toggle:checked ~ #mobile-menu {
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        }
+        .menu-open #mobile-menu {
             transform: translateX(0);
         }
 
@@ -69,17 +72,20 @@
             <a href="#bespoke" class="hover:text-yellow-500 transition">Bespoke</a>
         </div>
 
-        <label for="menu-toggle" class="md:hidden relative z-[160] cursor-pointer p-2">
-            <input type="checkbox" id="menu-toggle" class="hidden peer">
-            <div class="w-6 h-0.5 bg-yellow-600 mb-1.5 transition-all peer-checked:rotate-45 peer-checked:translate-y-2"></div>
-            <div class="w-6 h-0.5 bg-yellow-600 mb-1.5 transition-all peer-checked:opacity-0"></div>
-            <div class="w-6 h-0.5 bg-yellow-600 transition-all peer-checked:-rotate-45 peer-checked:-translate-y-2"></div>
-        </label>
+        <button id="hamburger-btn" class="md:hidden relative z-[160] p-2 flex flex-col gap-1.5 outline-none" onclick="toggleMenu()">
+            <div class="w-6 h-0.5 bg-yellow-600 transition-all duration-300" id="bar1"></div>
+            <div class="w-6 h-0.5 bg-yellow-600 transition-all duration-300" id="bar2"></div>
+            <div class="w-6 h-0.5 bg-yellow-600 transition-all duration-300" id="bar3"></div>
+        </button>
 
-        <div id="mobile-menu" class="fixed inset-0 bg-black/98 translate-x-full transition-transform duration-500 flex flex-col items-center justify-center space-y-10 md:hidden">
-            <a href="#about" onclick="closeMenu()" class="serif text-3xl gold-text">Tradition</a>
-            <a href="#menu" onclick="closeMenu()" class="serif text-3xl gold-text">The Menu</a>
-            <a href="#bespoke" onclick="closeMenu()" class="serif text-3xl gold-text">Bespoke Orders</a>
+        <div id="mobile-menu" class="fixed inset-0 bg-black translate-x-full flex flex-col items-center justify-center space-y-10 md:hidden z-[155]">
+            <a href="#about" onclick="toggleMenu()" class="serif text-4xl gold-text">Tradition</a>
+            <a href="#menu" onclick="toggleMenu()" class="serif text-4xl gold-text">The Menu</a>
+            <a href="#bespoke" onclick="toggleMenu()" class="serif text-4xl gold-text">Bespoke Orders</a>
+            <div class="pt-10 flex flex-col items-center gap-4">
+                <span class="text-[10px] tracking-[0.5em] text-gray-500 uppercase">Coimbatore, India</span>
+                <div class="w-8 h-[1px] bg-yellow-900/50"></div>
+            </div>
         </div>
     </nav>
 
@@ -109,10 +115,10 @@
                 <div class="absolute -top-10 -left-6 serif text-7xl md:text-[12rem] text-white/5 select-none">01</div>
                 <h3 class="serif text-4xl md:text-5xl mb-8 leading-tight">"Just Like <br><span class="italic text-yellow-600">Home</span> is a Promise."</h3>
                 <p class="text-gray-400 leading-relaxed mb-6">
-                    In our home, snacks aren't just food; they are the background score to every conversation. At Aathithya Snacks, we treat your order with the same sanctity. 
+                    In our home, snacks aren't just food; they are the background score to every conversation. At Aathithya Snacks, we treat your order with the same sanctity.
                 </p>
                 <div class="p-6 md:p-8 border border-yellow-900/30 bg-yellow-900/5 italic text-yellow-200/70 text-sm md:text-base">
-                    "We use the same spices we feed our children. No industrial shortcuts, no artificial crunch."
+                    "We use the same spices we feed our children. No industrial shortcuts, no artificial crunch. Just the honest heat of the stove and the warmth of family."
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4">
@@ -182,9 +188,9 @@
     </section>
 
     <footer class="py-12 px-6 flex flex-col md:flex-row justify-between items-center border-t border-white/5 text-[9px] text-gray-600 tracking-[0.3em] uppercase text-center gap-6">
-        <p>Aathithya Snacks © 2023</p>
+        <p>Aathithya Snacks © 2026</p>
         <div class="flex flex-wrap justify-center gap-6 md:gap-8">
-            <span>Coimbatore</span>
+            <span>Coimbatore, India</span>
             <span>Hand-Made</span>
             <span>On-Demand</span>
         </div>
@@ -205,27 +211,41 @@
             }
         };
 
-        function closeMenu() {
-            document.getElementById('menu-toggle').checked = false;
+        // Improved Toggle Menu
+        function toggleMenu() {
+            const body = document.body;
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+            
+            body.classList.toggle('menu-open');
+            
+            // Hamburger Animation
+            if (body.classList.contains('menu-open')) {
+                bar1.style.transform = "rotate(45deg) translate(5px, 5px)";
+                bar2.style.opacity = "0";
+                bar3.style.transform = "rotate(-45deg) translate(5px, -5px)";
+            } else {
+                bar1.style.transform = "none";
+                bar2.style.opacity = "1";
+                bar3.style.transform = "none";
+            }
         }
 
         // Secure Email Inquiry Functions
         function orderItem(name, code) {
-            const email = "personalofaathithya@gmail.com"; 
+            const email = "YOUR_EMAIL@gmail.com"; 
             const subject = encodeURIComponent(`Inquiry: ${name} (Code: ${code})`);
             const body = encodeURIComponent(`Greetings Aathithya Snacks,\n\nI would like to inquire about a fresh batch of ${name} (Code: ${code}). Please share details on the next available slot.\n\nThank you.`);
-            
             window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
         }
 
         function generalInquiry() {
-            const email = "personalofaathithya@gmail.com";
+            const email = "YOUR_EMAIL@gmail.com";
             const subject = encodeURIComponent("General Inquiry - Aathithya Snacks");
             const body = encodeURIComponent("Hello Aathithya Snacks,\n\nI'm looking for high-quality homemade snacks. Could you help me select from your collection?");
-            
             window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
         }
     </script>
 </body>
-
 </html>
